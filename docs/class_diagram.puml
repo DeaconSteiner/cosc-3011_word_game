@@ -1,0 +1,31 @@
+@startuml
+class Word {
+	-letters: List<Character>
+	+compareTo(other: Word): Feedback
+	+length(): int
+}
+
+class Feedback {
+	-correctLetters: int
+	-correctPositions: int
+	+toString(): String
+	+isCorrect(): boolean
+}
+
+class WordList {
+	-words: List<String>
+	+getRandom(): Word
+}
+
+class Game {
+	-secret: Word
+	-wordList: WordList
+	+start()
+	+makeGuess(guess: String)
+	+printFeedback(fb: Feedback)
+}
+
+Game *-- Word
+Game *-- WordList
+Word --> Feedback
+@enduml

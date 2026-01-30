@@ -1,0 +1,29 @@
+# Java compiled output
+*.class
+
+# Build/ output folders
+word_game/bin/
+word_game/out/
+word_game/target/
+word_game/build/
+
+# IDE files
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# VS code
+.vscode/
+
+# Zed files
+.zed/
+
+# Test output
+word_game/test/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
