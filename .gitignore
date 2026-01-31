@@ -23,6 +23,9 @@ word_game/build/
 # Test output
 word_game/test/
 
+# UML code
+*.puml
+
 # Logs and temp files
 *.log
 *.tmp
