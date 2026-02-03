@@ -1,12 +1,15 @@
 package wordgame;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 class Word {
 
     private ArrayList<Character> letters;
+    private String value;
 
     Word(String str) {
+        value = str.toLowerCase();
         letters = new ArrayList<>();
 
         for (char c : str.toLowerCase().toCharArray()) {
@@ -29,12 +32,21 @@ class Word {
             }
         }
 
-        for (int i = 0; i < unmatched.size(); i++) {
-            if (this.letters.contains(unmatched.get(i))) {
+        ArrayList<Character> noDuplicates = new ArrayList<>(
+            new HashSet<>(unmatched)
+        );
+
+        for (int i = 0; i < noDuplicates.size(); i++) {
+            if (this.letters.contains(noDuplicates.get(i))) {
                 lCorrect++;
             }
         }
         return new Feedback(lCorrect, pCorrect);
+    }
+
+    @Override
+    public String toString() {
+        return value;
     }
 
     public int length() {
