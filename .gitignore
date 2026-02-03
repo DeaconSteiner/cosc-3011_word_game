@@ -33,3 +33,4 @@ word_game/test/
 *.log
 *.tmp
 *.swp
+*/.~lock
