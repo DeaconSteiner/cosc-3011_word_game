@@ -26,6 +26,9 @@ word_game/test/
 # UML code
 *.puml
 
+# Design doc artifacts
+*.odt
+
 # Logs and temp files
 *.log
 *.tmp
