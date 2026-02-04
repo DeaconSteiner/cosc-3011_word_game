@@ -4,10 +4,12 @@ class Feedback {
 
     private int correctLetters;
     private int correctPositions;
+    private int wordLength;
 
-    Feedback(int correctLetters, int correctPositions) {
+    Feedback(int correctLetters, int correctPositions, int wordLength) {
         this.correctLetters = correctLetters;
         this.correctPositions = correctPositions;
+        this.wordLength = wordLength;
     }
 
     @Override
@@ -15,7 +17,7 @@ class Feedback {
         return "(" + correctLetters + ", " + correctPositions + ")";
     }
 
-    public boolean isCorrect(Word word) {
-        return correctPositions == word.length();
+    public boolean isCorrect() {
+        return correctPositions == wordLength;
     }
 }

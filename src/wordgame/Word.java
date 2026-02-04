@@ -17,6 +17,7 @@ class Word {
         }
     }
 
+    // I think this might be an override... but dont quote me
     public Feedback compareTo(Word other) {
         int lCorrect = 0; // # of correct letters
         int pCorrect = 0; // # of letters in correct position
@@ -32,6 +33,7 @@ class Word {
             }
         }
 
+        // Remove this if you want duplicates
         ArrayList<Character> noDuplicates = new ArrayList<>(
             new HashSet<>(unmatched)
         );
@@ -41,7 +43,7 @@ class Word {
                 lCorrect++;
             }
         }
-        return new Feedback(lCorrect, pCorrect);
+        return new Feedback(lCorrect, pCorrect, this.length());
     }
 
     @Override
