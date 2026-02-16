@@ -8,17 +8,8 @@ class Game {
     private WordList wordList;
 
     private void start() {
-        // Wordlist kept small for easy validation. Could be expanded in future.
-        wordList = new WordList(
-            new String[] {
-                "apple",
-                "child",
-                "hazel",
-                "santa",
-                "beard",
-                "berry",
-            }
-        );
+        // Change to src/words.txt for full game. test.txt is a placeholder for testing only.
+        WordList wordList = new WordList("src/test.txt");
 
         secret = wordList.getRandom();
         Feedback fb;
