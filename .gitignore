@@ -34,3 +34,6 @@ word_game/test/
 *.tmp
 *.swp
 */.~lock
+
+# Text files
+*.txt
