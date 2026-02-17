@@ -28,6 +28,8 @@ word_game/test/
 
 # Design doc artifacts
 *.odt
+*.doc
+*.docx
 
 # Logs and temp files
 *.log
