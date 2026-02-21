@@ -2,8 +2,9 @@ package wordgame;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.io.Serializable;
 
-class Word {
+class Word implements Serializable {
 
     private ArrayList<Character> letters;
     private String value;
@@ -18,6 +19,7 @@ class Word {
     }
 
     // I think this might be an override... but dont quote me
+    // I checked - It's not
     public Feedback compareTo(Word other) {
         int lCorrect = 0; // # of correct letters
         int pCorrect = 0; // # of letters in correct position
