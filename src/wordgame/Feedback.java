@@ -1,6 +1,6 @@
 package wordgame;
 
-import java.io.Serializable
+import java.io.Serializable;
 
 class Feedback implements Serializable {
 
