@@ -21,30 +21,18 @@ class Word implements Serializable {
     // I think this might be an override... but dont quote me
     // I checked - It's not
     public Feedback compareTo(Word other) {
-        int lCorrect = 0; // # of correct letters
+        int lCorrect = 0; // # of letters in the word, but not in the right position
         int pCorrect = 0; // # of letters in correct position
-
-        // Used to check for wrong position, right letter
-        ArrayList<Character> unmatched = new ArrayList<>();
 
         for (int i = 0; i < other.length(); i++) {
             if (this.letters.get(i).equals(other.letters.get(i))) {
                 pCorrect++;
-            } else {
-                unmatched.add(other.letters.get(i));
+            }
+            if (this.letters.contains(other.letters.get(i))) {
+              lCorrect++;
             }
         }
 
-        // Remove this if you want duplicates
-        ArrayList<Character> noDuplicates = new ArrayList<>(
-            new HashSet<>(unmatched)
-        );
-
-        for (int i = 0; i < noDuplicates.size(); i++) {
-            if (this.letters.contains(noDuplicates.get(i))) {
-                lCorrect++;
-            }
-        }
         return new Feedback(lCorrect, pCorrect, this.length());
     }
 
