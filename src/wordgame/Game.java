@@ -8,8 +8,8 @@ class Game {
     private WordList wordList;
 
     private void start() {
-        // Change to src/words.txt for full game. test.txt is a placeholder for testing only.
-        WordList wordList = new WordList("src/test.txt");
+        // Change to src/full.txt for full game. test.txt is a placeholder for testing only.
+        WordList wordList = new WordList("src/full.txt");
 
         secret = wordList.getRandom();
         Feedback fb;
