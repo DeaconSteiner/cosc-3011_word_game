@@ -18,21 +18,33 @@ public class GameServer {
     secret = wordList.getRandom();
     Feedback fb;
 
-    try {
-      ServerSocket server = new ServerSocket(5000);
+    try (ServerSocket server = new ServerSocket(5000)) {
       System.out.println("Server started!");
-
+      
+  
       // Socket connection
-      Socket client = server.accept();
-      System.out.println("Client connected!");
+      try (Socket client = server.accept();
+          ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
+          ObjectInputStream in = new ObjectInputStream(client.getInputStream())) {
 
-      ObjectInputStream in = new ObjectInputStream(client.getInputStream());
-      ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
+        do {
+          // wait for client guess 
+          Word guess = (Word) in.readObject();
 
+          // Create feedback object
+          fb = makeGuess(guess);
+
+          // Send feedback to client
+          out.writeObject(fb);
+          out.flush();
+
+        } while (!fb.isCorrect());
+      } catch (ClassNotFoundException e) {
+        System.err.println("Received unknown object from client: " + e.getMessage());
+      }
     } catch (IOException e) {
       System.err.println("Failed to start server: " + e.getMessage());
-    }
-    
+    } 
 }
 
   private Feedback makeGuess(Word guess) {
