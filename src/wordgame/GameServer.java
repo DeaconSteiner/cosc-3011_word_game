@@ -16,6 +16,7 @@ public class GameServer {
     wordList = new WordList("src/test.txt");
 
     secret = wordList.getRandom();
+    Feedback fb;
 
     try {
       ServerSocket server = new ServerSocket(5000);
@@ -24,6 +25,9 @@ public class GameServer {
       // Socket connection
       Socket client = server.accept();
       System.out.println("Client connected!");
+
+      ObjectInputStream in = new ObjectInputStream(client.getInputStream());
+      ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
 
     } catch (IOException e) {
       System.err.println("Failed to start server: " + e.getMessage());
