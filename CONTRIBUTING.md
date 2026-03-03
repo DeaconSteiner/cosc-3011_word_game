@@ -15,7 +15,7 @@ cd cosc‑3011_word_game
 ### 3. Create a New Branch  
 Always use a new branch for each set of changes:
 ```
-git checkout ‑b feature/your‑name
+git checkout ‑b feature/feature-name
 ```
 
 ### 4. Make Your Changes
@@ -25,7 +25,7 @@ Make code improvements, fix bugs, add features, or update documentation.
 ```
 git add .
 git commit ‑m "Short, clear description of change"
-git push origin feature/your‑name
+git push origin feature/feature-name
 ```
 
 ### 6. Open a Pull Request
