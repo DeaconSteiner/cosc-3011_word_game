@@ -9,7 +9,7 @@ class Game {
 
     private void start() {
         // Change to src/full.txt for full game. test.txt is a placeholder for testing only.
-        WordList wordList = new WordList("src/full.txt");
+        WordList wordList = new WordList("src/test.txt");
 
         secret = wordList.getRandom();
         Feedback fb;

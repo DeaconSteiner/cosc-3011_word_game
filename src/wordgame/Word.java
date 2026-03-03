@@ -21,19 +21,22 @@ class Word implements Serializable {
     // I think this might be an override... but dont quote me
     // I checked - It's not
     public Feedback compareTo(Word other) {
-        int lCorrect = 0; // # of letters in the word, but not in the right position
-        int pCorrect = 0; // # of letters in correct position
+        int correct = 0;
+        char[] colors = new char[this.length()]; // Color array for GUI.
+        // G = Green, Y = Yellow, B = Black/ Grey. 
 
         for (int i = 0; i < other.length(); i++) {
             if (this.letters.get(i).equals(other.letters.get(i))) {
-                pCorrect++;
-            }
-            if (this.letters.contains(other.letters.get(i))) {
-              lCorrect++;
+                colors[i] = 'G';
+                correct += 1;
+            } else if (this.letters.contains(other.letters.get(i))) {
+              colors[i] = 'Y';
+            } else {
+                colors[i] = 'B';
             }
         }
 
-        return new Feedback(lCorrect, pCorrect, this.length());
+        return new Feedback(colors, correct, this.length());
     }
 
     @Override
