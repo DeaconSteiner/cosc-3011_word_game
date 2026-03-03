@@ -21,16 +21,27 @@ class Word implements Serializable {
     // I think this might be an override... but dont quote me
     // I checked - It's not
     public Feedback compareTo(Word other) {
+        // this = hidden word
+        // other = guess
         int correct = 0;
         char[] colors = new char[this.length()]; // Color array for GUI.
         // G = Green, Y = Yellow, B = Black/ Grey. 
+        ArrayList<Character> unchecked = new ArrayList<>();
 
         for (int i = 0; i < other.length(); i++) {
             if (this.letters.get(i).equals(other.letters.get(i))) {
                 colors[i] = 'G';
                 correct += 1;
-            } else if (this.letters.contains(other.letters.get(i))) {
-              colors[i] = 'Y';
+            } else {
+                unchecked.add(this.letters.get(i));
+            }
+        }
+        for (int i = 0; i < other.length(); i++) {
+            if (colors[i] == 'G') continue; // Skip letters already marked.
+
+            if (unchecked.contains(other.letters.get(i))) {
+                colors[i] = 'Y';
+                unchecked.remove(other.letters.get(i));
             } else {
                 colors[i] = 'B';
             }
