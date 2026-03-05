@@ -9,7 +9,7 @@ class Game {
 
     private void start() {
         // Change to src/full.txt for full game. test.txt is a placeholder for testing only.
-        WordList wordList = new WordList("src/full.txt");
+        WordList wordList = new WordList("src/test.txt");
 
         secret = wordList.getRandom();
         Feedback fb;
@@ -18,7 +18,8 @@ class Game {
 
         do {
             System.out.print("Enter your guess: ");
-            String guess = scanner.nextLine();
+            String guessStr = scanner.nextLine();
+            Word guess = new Word(guessStr);
 
             fb = makeGuess(guess);
             printFeedback(fb);
@@ -28,8 +29,8 @@ class Game {
         scanner.close();
     }
 
-    private Feedback makeGuess(String guess) {
-        return new Word(guess).compareTo(secret);
+    private Feedback makeGuess(Word guess) {
+        return secret.compareTo(guess);
     }
 
     private static void printFeedback(Feedback fb) {

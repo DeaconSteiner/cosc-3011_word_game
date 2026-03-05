@@ -4,22 +4,26 @@ import java.io.Serializable;
 
 class Feedback implements Serializable {
 
-    private int correctLetters;
-    private int correctPositions;
+    char[] colors;
+    int correct;
     private int wordLength;
 
-    Feedback(int correctLetters, int correctPositions, int wordLength) {
-        this.correctLetters = correctLetters;
-        this.correctPositions = correctPositions;
+    Feedback(char[] colors, int correct, int wordLength) {
+        this.colors = colors;
+        this.correct = correct;
         this.wordLength = wordLength;
     }
 
     @Override
     public String toString() {
-        return "(" + correctLetters + ", " + correctPositions + ")";
+        StringBuilder sb = new StringBuilder();
+        for (char c : colors) {
+            sb.append(c).append(' ');
+        }
+        return sb.toString().trim();
     }
 
     public boolean isCorrect() {
-        return correctPositions == wordLength;
+        return correct == wordLength;
     }
 }
