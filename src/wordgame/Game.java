@@ -5,7 +5,6 @@ import java.util.Scanner;
 class Game {
 
     private Word secret;
-    private WordList wordList;
 
     private void start() {
         // Change to src/full.txt for full game. test.txt is a placeholder for testing only.
